@@ -1,0 +1,13 @@
+if [ $# -lt 1 ]
+then
+        echo "Usage:phone searchfor [...searchfor]"
+        echo "(You didn't tell me what you want to search for.)"
+fi
+str1="$1"
+for s in $*
+do
+        str1+="|"
+        str1+=$s
+done
+egrep -i $str1 mydata | awk -f display.awk
+
