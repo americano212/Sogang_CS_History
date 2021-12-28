@@ -1,0 +1,19 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input a,
+    input b,
+    input b_n_1,
+    output b_n,
+    output d,
+    output tmp1,
+    output tmp2,
+    output tmp3
+    );
+    assign tmp1 = a ^ b;
+    assign tmp2 = ~tmp1 & b_n_1;
+    assign tmp3 = ~a & b;
+    assign b_n = tmp2 | tmp3; 
+    assign d = tmp1 ^ b_n_1;
+endmodule

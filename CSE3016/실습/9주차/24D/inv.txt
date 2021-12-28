@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input a0,
+    input a1,
+    output d0,
+    output d1,
+    output d2,
+    output d3
+    
+    );
+    assign d0 = ~a0 & ~a1;
+    assign d1 = ~a0 & a1;
+    assign d2 = a0 & ~a1;
+    assign d3 = a0 & a1;
+endmodule

@@ -1,0 +1,13 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input d,
+    input clk,
+    output q,
+    output qb
+    );
+    
+    assign q = ~(qb | (clk & d));
+    assign qb = ~(q | (clk & ~d));
+endmodule

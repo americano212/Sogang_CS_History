@@ -1,0 +1,36 @@
+`timescale 1ns / 1ps
+
+module inv_tb;
+
+reg a,b,A,B,C,D;
+
+wire o;
+
+inv u_inv (
+.a (a ),
+.b (b ),
+.A (A ),
+.B (B ),
+.C (C ),
+.D (D ),
+.o (o )
+ );
+
+initial a = 1'b0;
+initial b = 1'b0;
+initial A = 1'b0;
+initial B = 1'b0;
+initial C = 1'b0;
+initial D = 1'b0;
+always a = #200 ~a;
+always b = #100 ~b;
+always A = #50 ~A;
+always B = #25 ~B;
+always C = #12.5 ~C;
+always D = #6.25 ~D;
+initial begin
+    #400
+    $finish;
+end
+
+endmodule

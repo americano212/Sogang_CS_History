@@ -1,0 +1,29 @@
+`timescale 1ns / 1ps
+
+module inv_tb;
+
+reg clk,rst,in;
+
+wire[3:0] state;
+wire flag;
+
+inv u_inv (
+    clk,
+    rst,
+    state,
+    in,
+    flag
+ );
+ 
+initial clk = 1'b0;
+initial rst = 1'b1;
+initial in = 1'b1;
+always clk = #7 ~clk;
+always rst = #500 ~rst;
+always in = #10 ~in;
+initial begin
+    #1000
+    $finish;
+end
+
+endmodule

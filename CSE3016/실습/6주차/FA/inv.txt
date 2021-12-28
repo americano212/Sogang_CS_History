@@ -1,0 +1,20 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input a,
+    input b,
+    input Cin,
+    output c,
+    output Cout,
+    output tmp1,
+    output tmp2,
+    output tmp3
+    );
+    assign tmp1 = a ^ b;
+    assign tmp2 = a & b;
+    assign tmp3 = Cin & tmp1;
+    assign c = Cin ^ tmp1;
+    assign Cout = tmp3 | tmp2;
+    
+endmodule

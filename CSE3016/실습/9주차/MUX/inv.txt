@@ -1,0 +1,15 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input a,
+    input b,
+    input A,
+    input B,
+    input C,
+    input D,
+    output o
+    
+    );
+    assign o = (A & ~b & ~a) | (B & b & ~a) | (C & ~b & a) | (D & b & a);
+endmodule

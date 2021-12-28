@@ -1,0 +1,14 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input a,
+    input b,
+    output eq,
+    output le,
+    output gr
+    );
+    assign eq = ~(a ^ b);
+    assign le = ~a & b;
+    assign gr = a & ~b;
+endmodule

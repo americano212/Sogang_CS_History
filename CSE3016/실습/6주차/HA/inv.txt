@@ -1,0 +1,13 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input a,
+    input b,
+    output c,
+    output s
+    );
+    assign s = a ^ b;
+    assign c = a & b;
+    
+endmodule

@@ -1,0 +1,43 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    clk,
+    rst,
+    out,
+    tmp
+    );
+    output[3:0] out;
+    output[3:0] tmp;
+    input clk,rst;
+    reg[3:0] out;
+    reg[3:0] tmp;
+    
+    always @(posedge clk)
+    begin 
+        if(!rst)
+        begin
+            tmp <= 0;
+            out <= 0;
+        end
+        else
+        begin
+            if(tmp < 4)
+            begin
+                tmp <= tmp + 1;
+                out <= tmp + 1;
+            end
+            else if(tmp == 10)
+            begin
+                tmp <= 0;
+                out <= 0;
+            end
+            else
+            begin
+                tmp <= tmp + 1;
+                out <= ~(9 - (tmp + 1));
+            end
+        end
+    end
+    
+endmodule

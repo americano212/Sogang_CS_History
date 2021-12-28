@@ -1,0 +1,28 @@
+`timescale 1ns / 1ps
+
+module inv_tb;
+
+reg clk,rst,check;
+wire a,b,c,d,e,f,g,dp,digit;
+wire[3:0] out;
+
+inv u_inv (
+    clk,
+    rst,
+    out,
+    check,
+    a,b,c,d,e,f,g,dp,digit
+ );
+
+initial clk = 1'b0;
+initial rst = 1'b1;
+initial check = 1'b0;
+always clk = #50 ~clk;
+always rst = #500 ~rst;
+always check = #200 ~check;
+initial begin
+    #1000
+    $finish;
+end
+
+endmodule

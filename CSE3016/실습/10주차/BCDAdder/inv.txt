@@ -1,0 +1,57 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input a0,
+    input a1,
+    input a2,
+    input a3,
+    input b0,
+    input b1,
+    input b2,
+    input b3,
+    input c0,
+    
+    output c1,
+    output c2,
+    output c3,
+    output c4,
+    wire s0,
+    wire s1,
+    wire s2,
+    wire s3,
+    output C1,
+    output C2,
+    output C3,
+    output S0,
+    output S1,
+    output S2,
+    output S3,
+    output k0
+    );
+    assign s0 = (a0 ^ b0) ^ c0;
+    assign c1 = (a0 & b0) | (c0 & (a0 ^ b0));
+    
+    assign s1 = (a1 ^ b1) ^ c1;
+    assign c2 = (a1 & b1) | (c1 & (a1 ^ b1));
+    
+    assign s2 = (a2 ^ b2) ^ c2;
+    assign c3 = (a2 & b2) | (c2 & (a2 ^ b2));
+    
+    assign s3 = (a3 ^ b3) ^ c3;
+    assign c4 = (a3 & b3) | (c3 & (a3 ^ b3));
+    
+    assign k0 = c4 | (s3 & s2) | (s3 & s1);
+    
+    assign S0 = (0 ^ s0) ^ c0;
+    assign C1 = (0 & s0) | (c0 & (0 ^ s0));
+    
+    assign S1 = (k0 ^ s1) ^ C1;
+    assign C2 = (k0 & s1) | (C1 & (k0 ^ s1));
+    
+    assign S2 = (k0 ^ s2) ^ C2;
+    assign C3 = (k0 & s2) | (C2 & (k0 ^ s2));
+    
+    assign S3 = (0 ^ s3) ^ C3;
+    
+endmodule

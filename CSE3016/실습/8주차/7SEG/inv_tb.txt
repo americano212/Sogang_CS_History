@@ -1,0 +1,39 @@
+`timescale 1ns / 1ps
+
+module inv_tb;
+
+reg i1,i2,i3,i4;
+
+wire a,b,c,d,e,f,g,digit,dp;
+
+inv u_inv (
+.i1 (i1 ),
+.i2 (i2 ),
+.i3 (i3 ),
+.i4 (i4 ),
+.a (a ),
+.b (b ),
+.c (c ),
+.d (d ),
+.e (e ),
+.f (f ),
+.g (g ),
+.digit (digit ),
+.dp (dp )
+ );
+
+initial i1 = 1'b0;
+initial i2 = 1'b0;
+initial i3 = 1'b0;
+initial i4 = 1'b0;
+always i1 = #200 ~i1;
+always i2 = #100 ~i2;
+always i3 = #50 ~i3;
+always i4 = #25 ~i4;
+
+initial begin
+    #1000
+    $finish;
+end
+
+endmodule

@@ -1,0 +1,28 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    input i1,
+    input i2,
+    input i3,
+    input i4,
+    output a,
+    output b,
+    output c,
+    output d,
+    output e,
+    output f,
+    output g,
+    output digit,
+    output dp
+    );
+    assign a = (i1 & ~i2 & ~i3) | (~i1 & i2 & i4) | (i1 & ~i4) | (~i1 & i3) | (i2 & i3) | (~i2 & ~i4);
+    assign b = (~i1 & ~i3 & ~i4) | (~i1 & i3 & i4) | (i1 & ~i3 & i4) | (~i2 & ~i3) | (~i2 & ~i4);
+    assign c = (~i1 & ~i3) | (~i1 & i4) | (~i3 & i4) | (~i1 & i2) | (i1 & ~i2);
+    assign d = (~i1 & ~i2 & ~i4) | (~i2 & i3 & i4) | (i2 & ~i3 & i4) | (i2 & i3 & ~i4) | (i1 & ~i3 & ~i4);
+    assign e = (~i2 & ~i4) | (i3 & ~i4) | (i1 & i3) | (i1 & i2);
+    assign f = (~i1 & i2 & ~i3) | (~i3 & ~i4) | (i2 & ~i4) | (i1 & ~i2) | (i1 & i3);
+    assign g = (~i1 & i2 & ~i3) | (~i2 & i3) | (i3 & ~i4) | (i1 & ~i2) | (i1 & i4);
+    assign digit = a | b | c | d | e | f | g;
+    assign dp = 1;
+endmodule

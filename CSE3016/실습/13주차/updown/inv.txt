@@ -1,0 +1,52 @@
+`timescale 1ns / 1ps
+
+
+module inv(
+    clk,
+    rst,
+    out,
+    check,
+    a,b,c,d,e,f,g,dp,digit
+    );
+    output[3:0] out;
+    output a,b,c,d,e,f,g,dp,digit;
+    reg a,b,c,d,e,f,g,dp,digit;
+    input clk,rst,check;
+    reg[3:0] out = 4'b0000;
+    
+    always @(posedge clk)
+    begin 
+        if(!rst)
+            out <= 4'b0000;
+        else
+        begin
+            if(check)
+            begin
+                out <= out - 1;
+                a = 1'b0;
+                b = 1'b1;
+                c = 1'b1;
+                d = 1'b1;
+                e = 1'b1;
+                f = 1'b0;
+                g = 1'b1;
+                dp = 1'b0;
+                digit = a | b | c | d | e | f | g | dp;
+            end
+            else
+            begin
+                out <= out + 1;
+                a = 1'b0;
+                b = 1'b1;
+                c = 1'b1;
+                d = 1'b1;
+                e = 1'b1;
+                f = 1'b1;
+                g = 1'b0;
+                dp = 1'b0;
+                digit = a | b | c | d | e | f | g | dp;
+            end
+        end   
+    end
+    
+endmodule

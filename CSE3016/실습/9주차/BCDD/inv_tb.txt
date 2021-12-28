@@ -1,0 +1,38 @@
+`timescale 1ns / 1ps
+
+module inv_tb;
+
+reg a0,a1,a2,a3;
+
+wire d1,d2,d3,d4,d5,d6,d7,d8,d9;
+
+inv u_inv (
+.a0 (a0 ),
+.a1 (a1 ),
+.a2 (a2 ),
+.a3 (a3 ),
+.d1 (d1 ),
+.d2 (d2 ),
+.d3 (d3 ),
+.d4 (d4 ),
+.d5 (d5 ),
+.d6 (d6 ),
+.d7 (d7 ),
+.d8 (d8 ),
+.d9 (d9 )
+ );
+
+initial a0 = 1'b0;
+initial a1 = 1'b0;
+initial a2 = 1'b0;
+initial a3 = 1'b0;
+always a0 = #200 ~a0;
+always a1 = #100 ~a1;
+always a2 = #50 ~a2;
+always a3 = #25 ~a3;
+initial begin
+    #1000
+    $finish;
+end
+
+endmodule

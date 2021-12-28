@@ -1,0 +1,25 @@
+`timescale 1ns / 1ps
+
+module inv_tb;
+
+reg d,clk;
+
+wire q,qb;
+
+inv u_inv (
+.d (d ),
+.q (q ),
+.qb (qb ),
+.clk (clk )
+ );
+
+initial d = 1'b0;
+initial clk = 1'b0;
+always d = #200 ~d;
+always clk = #100 ~clk;
+initial begin
+    #1000
+    $finish;
+end
+
+endmodule
